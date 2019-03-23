@@ -1,1 +1,1 @@
-void Log(const char* msg);
+void TestCommon(string s);

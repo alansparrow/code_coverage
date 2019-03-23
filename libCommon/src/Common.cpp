@@ -1,9 +1,11 @@
 #include <iostream>
-#include "Common.h"
-
+#include <string>
 using namespace std;
 
-void Log(const char* msg)
+#include "Common.h"
+
+void TestCommon(string s)
 {
-    cout << __func__ << ": " << msg << endl;
+    string myS = s + "  ";
+    cout << myS << __func__ << endl;
 }

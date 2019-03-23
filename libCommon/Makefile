@@ -22,7 +22,9 @@ $(TARGET): $(OBJS)
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
 	$(CPC) $(CFLAGS) $(COV_FLAGS) $(INCLUDES) $< -o $@
 
-build_repo:
+build_repo: obj
+
+obj:
 	mkdir -p ./obj
 
 clean:

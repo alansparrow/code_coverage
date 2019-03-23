@@ -17,7 +17,7 @@ OBJS                    := $(patsubst %.cpp, $(OBJ_DIR)/%.o, $(SRCS))
 all: build_repo $(TARGET)
 
 $(TARGET): $(OBJS)
-	$(AR) -cvq $@ $<
+	$(AR) -cvqT $@ $<
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
 	$(CPC) $(CFLAGS) $(COV_FLAGS) $(INCLUDES) $< -o $@

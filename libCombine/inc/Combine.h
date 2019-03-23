@@ -1,0 +1,2 @@
+
+void TestCombine(string s);

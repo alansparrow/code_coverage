@@ -22,7 +22,7 @@ all:
 	$(MAKE) x_objs && $(MAKE) $(TARGET)
 
 $(TARGET): $(OBJS)
-	$(AR) -cvr $(abspath $@) $(abspath $<) $(wildcard *.o)
+	$(AR) -cvr $(abspath $@) $(OBJS) $(wildcard *.o)
 	rm -rf *.o
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp 

@@ -2,16 +2,16 @@ TARGET					:= libCommon.a
 CC						:= clang
 CPC						:= clang++
 
-COV_FLAGS               := -fprofile-arcs -ftest-coverage
+COV_FLAGS               := --coverage
 CFLAGS                  := -c -g -Wall
-LDFLAGS                 := -fprofile-arcs -ftest-coverage
+LDFLAGS                 := 
 
-INCLUDES                := -I"./inc"
+INCLUDES                := -I"$(abspath ./inc)"
 
-SRC_DIR                 := ./src
+SRC_DIR                 := $(abspath ./src)
 SRCS                    := Common.cpp
 
-OBJ_DIR                 := ./obj
+OBJ_DIR                 := $(abspath ../obj)
 OBJS                    := $(patsubst %.cpp, $(OBJ_DIR)/%.o, $(SRCS))
 
 all: build_repo $(TARGET)

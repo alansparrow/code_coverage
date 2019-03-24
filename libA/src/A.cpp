@@ -12,3 +12,8 @@ void TestA(string s)
     cout << myS << __func__ << endl;
     TestCommon(myS);
 }
+
+void TestA1(void)
+{
+    cout << __func__ << endl;
+}

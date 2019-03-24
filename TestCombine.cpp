@@ -12,8 +12,8 @@ int main(void)
 {
     string myS = "";
     cout << myS << __func__ << endl;
-    TestCommon(myS);
+    //TestCommon(myS);
     TestA(myS);
-    TestB(myS);
-    TestCombine(myS);
+    //TestB(myS);
+    //TestCombine(myS);
 }

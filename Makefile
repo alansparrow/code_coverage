@@ -4,32 +4,33 @@ TARGET2					:= TestCombine
 CC						:= clang
 CPC						:= clang++
 
-COV_FLAGS               := -fprofile-arcs -ftest-coverage
+COV_FLAGS               := --coverage
 CFLAGS                  := -c -g -Wall
 LDFLAGS                 := -g -Wall
 
 INCLUDES                := \
-						-I"./libCommon/inc" \
-						-I"./libA/inc" \
-						-I"./libB/inc" \
-						-I"./libCombine/inc" 
+						-I"$(abspath ./libCommon/inc)" \
+						-I"$(abspath ./libA/inc)" \
+						-I"$(abspath ./libB/inc)" \
+						-I"$(abspath ./libCombine/inc)" 
 
 EXT_LIBS_PATHS			:= \
-						-L./libA
+						-L$(abspath ./libA)
 EXT_LIBS_NAMES			:= \
 						-lA
 #EXT_LIBS				:= $(EXT_LIBS_PATHS) $(EXT_LIBS_NAMES)
 EXT_LIBS1				:= \
-						./libA/libA.a
+						$(abspath ./libA/libA.a) \
+						$(abspath ./libB/libB.a)
 
 EXT_LIBS2				:= \
-						./libCombine/libCombine.a
+						$(abspath ./libCombine/libCombine.a)
 
-SRC_DIR                 := ./
+SRC_DIR                 := $(abspath ./)
 SRCS1                   := Test.cpp
 SRCS2                   := TestCombine.cpp
 
-OBJ_DIR                 := ./obj
+OBJ_DIR                 := $(abspath ./obj)
 OBJS1                   := $(patsubst %.cpp, $(OBJ_DIR)/%.o, $(SRCS1))
 OBJS2                   := $(patsubst %.cpp, $(OBJ_DIR)/%.o, $(SRCS2))
 
@@ -59,6 +60,7 @@ libCombine:
 
 build_repo:
 	mkdir -p ./obj
+	cp ./llvm-gcov.sh ./obj && chmod +x ./obj/llvm-gcov.sh
 
 clean:
 	rm -rf ./obj

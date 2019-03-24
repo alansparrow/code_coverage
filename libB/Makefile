@@ -2,29 +2,29 @@ TARGET					:= libB.a
 CC						:= clang
 CPC						:= clang++
 
-COV_FLAGS               := -fprofile-arcs -ftest-coverage
+COV_FLAGS               := --coverage
 CFLAGS                  := -c -g -Wall
-LDFLAGS                 := -fprofile-arcs -ftest-coverage
+LDFLAGS                 := 
 
 INCLUDES                := \
-						-I"./inc" \
-						-I"../libCommon/inc"
-EXT_LIBS				:= ../libCommon/libCommon.a
+						-I"$(abspath ./inc)" \
+						-I"$(abspath ../libCommon/inc)"
+EXT_LIBS				:= $(abspath ../libCommon/libCommon.a)
 						
 
-SRC_DIR                 := ./src
+SRC_DIR                 := $(abspath ./src)
 SRCS                    := B.cpp
 
-OBJ_DIR                 := ./obj
+OBJ_DIR                 := $(abspath ../obj)
 OBJS                    := $(patsubst %.cpp, $(OBJ_DIR)/%.o, $(SRCS))
 
 all: build_repo $(TARGET)
 
 $(TARGET): $(OBJS)
-	$(AR) -cvqT $@ $< $(EXT_LIBS)
+	$(AR) -cvqT $(abspath $@) $(abspath $<) $(EXT_LIBS)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
-	$(CPC) $(CFLAGS) $(COV_FLAGS) $(INCLUDES) $< -o $@
+	$(CPC) $(CFLAGS) $(COV_FLAGS) $(INCLUDES) $(abspath $<) -o $(abspath $@)
 
 build_repo: obj
 

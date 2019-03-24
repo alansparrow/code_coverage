@@ -2,26 +2,26 @@ TARGET					:= libCombine.a
 CC						:= clang
 CPC						:= clang++
 
-COV_FLAGS               := -fprofile-arcs -ftest-coverage
+COV_FLAGS               := --coverage
 CFLAGS                  := -c -g -Wall
-LDFLAGS                 := -fprofile-arcs -ftest-coverage
+LDFLAGS                 := 
 
 INCLUDES                := \
-						-I"./inc" \
-						-I"../libCommon/inc" \
-						-I"../libA/inc" \
-						-I"../libB/inc"
+						-I"$(abspath ./inc)" \
+						-I"$(abspath ../libCommon/inc)" \
+						-I"$(abspath ../libA/inc)" \
+						-I"$(abspath ../libB/inc)"
 
 EXT_LIBS				:= \
-						../libCommon/libCommon.a \
-						../libA/libA.a \
-						../libB/libB.a \
+						$(abspath ../libCommon/libCommon.a) \
+						$(abspath ../libA/libA.a) \
+						$(abspath ../libB/libB.a) \
 						
 
-SRC_DIR                 := ./src
+SRC_DIR                 := $(abspath ./src)
 SRCS                    := Combine.cpp
 
-OBJ_DIR                 := ./obj
+OBJ_DIR                 := $(abspath ../obj)
 OBJS                    := $(patsubst %.cpp, $(OBJ_DIR)/%.o, $(SRCS))
 
 all: build_repo $(TARGET)

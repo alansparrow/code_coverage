@@ -24,7 +24,7 @@ EXT_LIBS1				:= \
 						$(abspath ./libB/libB.a)
 
 EXT_LIBS2				:= \
-						$(abspath ./libCombine/libCombine.a)
+						-Wl,--whole-archive $(abspath ./libCombine/libCombine.a) -Wl,--no-whole-archive 
 
 SRC_DIR                 := $(abspath ./)
 SRCS1                   := Test.cpp

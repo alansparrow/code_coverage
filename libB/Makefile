@@ -13,7 +13,7 @@ EXT_LIBS				:= $(abspath ../libCommon/libCommon.a)
 						
 PRJ_DIR					:= $(abspath .)
 SRC_DIR                 := $(abspath ./src)
-SRCS                    := B.cpp
+SRCS                    := B.cpp BB.cpp
 
 OBJ_DIR                 := $(abspath ../obj)
 OBJS                    := $(patsubst %.cpp, $(OBJ_DIR)/%.o, $(SRCS))
